@@ -1,12 +1,14 @@
 const mysql = require('mysql');
 
+const secrets = require('./secrets');
+
 // Function to create a new connection to MySQL
 function createConnection() {
     return mysql.createConnection({
-        host: 'mysql-sleeptracker.alwaysdata.net',
-        user: '347696',
-        password: 'HxPLQ2^LL@owA5',
-        database: 'sleeptracker_main'
+        host: secrets.database.host,
+        user: secrets.database.user,
+        password: secrets.database.password,
+        database: secrets.database.database
     });
 }
 

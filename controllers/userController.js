@@ -2,8 +2,10 @@ const UserDao = require('../dao/userDao');
 
 const {OAuth2Client} = require('google-auth-library');
 
-const androidClientId = '1023281627813-snquqr6m76bcl45g3gdmck9se31erlbn.apps.googleusercontent.com';
-const webClientId = '1023281627813-gn1lpaov1m4neb3q7jdkiful8fk29lqp.apps.googleusercontent.com';
+const secrets = require('../secrets');
+
+const androidClientId = secrets.google.androidClientId;
+const webClientId = secrets.google.webClientId;
 const client = new OAuth2Client(androidClientId);
 
 class UserController {
@@ -12,7 +14,7 @@ class UserController {
         const { authorizationToken } = req.body; // Retrieve the authorization token from the request body
 
         try {
-            // Verify Google ID token
+            // Verify Google ID token (https://developers.google.com/identity/gsi/web/guides/verify-google-id-token?hl=fr#node.js)
             const ticket = await client.verifyIdToken({ idToken: authorizationToken, audience: androidClientId });
             const payload = ticket.getPayload(); // Retrieve the payload from the ticket
 

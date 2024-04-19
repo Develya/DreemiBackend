@@ -1,5 +1,7 @@
 const FitbitAuthDao = require('../dao/fitbitauthDao');
 
+const secrets = require('../secrets');
+
 // Function to generate the Basic token
 function generateBasicToken(clientId, clientSecret) {
     const credentials = `${clientId}:${clientSecret}`;
@@ -33,8 +35,8 @@ class FitbitAuthController {
         }
     
         // Fitbit API credentials
-        const fitbitClientId = '23S3GJ';
-        const fitbitClientSecret = '8e6afa51836defb68586db37678fe316';
+        const fitbitClientId = secrets.fitbit.clientId;
+        const fitbitClientSecret = secrets.fitbit.clientSecret;
     
         // Generate the Basic token
         const basicToken = generateBasicToken(fitbitClientId, fitbitClientSecret);
