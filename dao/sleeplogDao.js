@@ -27,6 +27,32 @@ class SleepLogDao {
         });
     }
 
+    static async getLastFourteenDaysSleepLogsByUserId(userId) {
+        return new Promise((resolve, reject) => {
+            db.query('SELECT * FROM SleepLog WHERE userID = ? ORDER BY startDate DESC LIMIT 14', [userId], (error, results) => {
+                if (error) {
+                    console.error('Error fetching sleeplogs:', error);
+                    reject(error);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    }
+
+    static async getSleepLogsByPeriod(userId, startDate, endDate) {
+        return new Promise((resolve, reject) => {
+            db.query('SELECT * FROM SleepLog WHERE userID = ? AND startDate >=? AND startDate <=?', [userId, startDate, endDate], (error, results) => {
+                if (error) {
+                    console.error('Error fetching sleeplogs:', error);
+                    reject(error);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+    }
+
     static async deleteAllByUserId(userId) {
         return new Promise((resolve, reject) => {
             db.query('DELETE FROM SleepLog WHERE userID = ?', [userId], (error, results) => {

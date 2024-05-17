@@ -11,9 +11,27 @@ class SleepLogController {
             });
     }
 
+    static async getSleepLogsByPeriod(req, res) {
+        const { userId } = req.params;
+        const { startDate, endDate } = req.body;
+        SleepLogDao.getSleepLogsByPeriod(userId, startDate, endDate)
+            .then((sleepLogs) => {
+                console.log(sleepLogs);
+                res.json(sleepLogs);
+            });
+    }
+
     static async getLastSevenDaysSleepLogs(req, res) {
         const { userId } = req.params;
         SleepLogDao.getLastSevenDaysSleepLogsByUserId(userId)
+            .then((sleepLogs) => {
+                res.json(sleepLogs);
+            });
+    }
+
+    static async getLastFourteenDaysSleepLogs(req, res) {
+        const { userId } = req.params;
+        SleepLogDao.getLastFourteenDaysSleepLogsByUserId(userId)
             .then((sleepLogs) => {
                 res.json(sleepLogs);
             });
