@@ -1,4 +1,4 @@
-const FitbitAuthDao = require('../dao/fitbitauthDao');
+const FitbitAuthDao = require('../dao/fitbitAuthDao');
 
 const secrets = require('../secrets');
 

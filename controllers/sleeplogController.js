@@ -1,6 +1,6 @@
-const SleepLogDao = require('../dao/sleeplogDao');
-const FitbitAuthDao = require('../dao/fitbitauthDao');
-const SleepLog = require('../models/sleeplog');
+const SleepLogDao = require('../dao/sleepLogDao');
+const FitbitAuthDao = require('../dao/fitbitAuthDao');
+const SleepLog = require('../models/sleepLog');
 
 class SleepLogController {
     static async getSleepLogs(req, res) {

@@ -1,0 +1,11 @@
+services:
+    app:
+        container_name: dreemiapi
+        image: dreemiapi
+        restart: always
+        build:
+            context: .
+            dockerfile: Dockerfile
+            target: base
+        ports:
+            - "${PORT}:${PORT}"

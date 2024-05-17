@@ -1,5 +1,5 @@
 const express = require('express');
-const SleepLogController = require('../controllers/sleeplogController');
+const SleepLogController = require('../controllers/sleepLogController');
 
 const router = express.Router();
 
